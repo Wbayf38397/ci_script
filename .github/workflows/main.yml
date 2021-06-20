@@ -19,6 +19,12 @@ jobs:
       uses: actions/checkout@v1
     - name: Build
       run: |
+      
+           apt-get update
+           apt-get install -y sudo
+           apt-get install -y unzip
+           apt-get install -y wget
+           echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections
            apt-get -y update && apt-get -y upgrade && apt-get -y install bc build-essential bison flex zip gcc clang libc6 curl libstdc++6 git wget libssl-dev && apt-get -y install p7zip-full python python2 python3 python3-pip tzdata
            git clone https://github.com/zexceed12300/eternalx_ci
            cd eternalx_ci
